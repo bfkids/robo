@@ -3,7 +3,7 @@ import board
 import pwmio
 import digitalio
 
-# --- SETUP SENSOR (3.3V) ---
+# --- SETUP DISTANZSENSOR (3.3V) ---
 trig = digitalio.DigitalInOut(board.GP14)
 trig.direction = digitalio.Direction.OUTPUT
 echo = digitalio.DigitalInOut(board.GP15)
@@ -25,12 +25,11 @@ v = 6000  # Vorwärts rechts
 r = 3830  # Vorwärts links (angepasst an v=6000)
 k = 4260  # Kurve
 
-# --- MOTOREN SETUP ---
+# --- SETUP MOTOREN ---
 pwm_links = pwmio.PWMOut(board.GP22, frequency=50, duty_cycle=s)
 pwm_rechts = pwmio.PWMOut(board.GP28, frequency=50, duty_cycle=s)
 
-# --- FUNKTIONEN SENSOR ---
-
+# --- SENSOREN ---
 def distanz():
     trig.value = False
     time.sleep(0.01) # Kurze Beruhigungspause vor Messung
@@ -49,15 +48,14 @@ def distanz():
     
     return (t_1 - t_0) * 17150
 
+# --- AKTOREN ---
 def blink(anzahl):
     for i in range(anzahl):
         led.value = True
         time.sleep(0.1)
         led.value = False
         time.sleep(0.1)
-
-# --- FUNKTIONEN BEWEGUNG ---
-
+        
 def stop(): 
     pwm_links.duty_cycle = s 
     pwm_rechts.duty_cycle = s
