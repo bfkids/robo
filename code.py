@@ -21,8 +21,8 @@ start_button.pull = digitalio.Pull.UP
 
 # --- PWM WERTE ---
 s = 4915  # Stopp
-v = 6000  # Vorwärts rechts
-r = 3830  # Vorwärts links (angepasst an v=6000)
+v = 6000  # Vorwärts 
+r = 3830  # Rückwärts (angepasst an v=6000)
 k = 4260  # Kurve
 
 # --- SETUP MOTOREN ---
@@ -59,11 +59,11 @@ def blink(anzahl):
 def stop(): 
     pwm_links.duty_cycle = s 
     pwm_rechts.duty_cycle = s
-    time.sleep(0.3)
+    time.sleep(0.1)
 
 def vor(): 
-    pwm_links.duty_cycle = r
-    pwm_rechts.duty_cycle = v
+    pwm_links.duty_cycle = v
+    pwm_rechts.duty_cycle = r
 
 def kurve(): 
     # Dreht auf der Stelle
@@ -81,9 +81,9 @@ while True:
     if not start_button.value:
         d = distanz()
         
-        if d < 20: # Wenn Hindernis näher als 20cm
-            stop()
-            blink(3) 
+        if d < 10: 
+            stop() 
+            blink(3)
             kurve()
             stop()
             
@@ -93,5 +93,6 @@ while True:
         # Schalter ist AUS
         stop()
         led.value = False
-    
 
+time.sleep(0.05)
+    
