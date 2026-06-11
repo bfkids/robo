@@ -1,0 +1,10 @@
+BreadSnowBot Model 1: The Explorer
+This variation utilizes standard tracks instead of two wheels to manage rough terrains and indoor obstacles flawlessly. It is ideal for navigating living room carpets.
+
+## Specifications
+| Feature | Detail |
+| --- | --- |
+| Terrain | Indoor / Carpets |
+| Max Speed | 0.4 m/s |
+| Sensors | Ultrasonic + Light |
+| Battery Life | 2 Hours |
