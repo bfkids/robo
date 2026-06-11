@@ -30,8 +30,40 @@
     <header>
         <h1>Inspired Robot Models</h1>
     </header>
-    <p>Click on the models below to look at different configurations and their specific variations in parts.</p>
 
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion('model_1', this)">Model 1: The Explorer <span>+</span></div>
-        <div id="model_1
+        <div id="model_1" class="accordion-content">
+            <div class="image-placeholder">[Image: model_1]</div>
+            <div class="dynamic-text">Loading data...</div>
+            <div class="dynamic-table">Loading specifications...</div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <div class="accordion-header" onclick="toggleAccordion('model_2', this)">Model 2: Speedster Edition <span>+</span></div>
+        <div id="model_2" class="accordion-content">
+            <div class="image-placeholder">[Image: model_2]</div>
+            <div class="dynamic-text">Loading data...</div>
+            <div class="dynamic-table">Loading specifications...</div>
+        </div>
+    </div>
+
+    <script>
+        function parseMarkdownTable(markdownText) {
+            const lines = markdownText.trim().split('\n');
+            if (lines.length < 2) return '';
+            
+            let html = '<table>';
+            let totalSum = 0;
+            let isFirstRow = true;
+
+            lines.forEach((line, index) => {
+                if (line.includes('---')) return;
+                
+                // Deine funktionierende Splitting- und Filterlogik
+                const cells = line.split('|').map(c => c.trim()).filter(c => c !== '');
+                
+                if (cells.length > 0) {
+                    html += '<tr>';
+                    cells.forEach((cell, cellIndex) => {
