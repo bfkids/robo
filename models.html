@@ -56,14 +56,3 @@
             
             let html = '<table>';
             let totalSum = 0;
-            let isFirstRow = true;
-
-            lines.forEach((line, index) => {
-                if (line.includes('---')) return;
-                
-                // Deine funktionierende Splitting- und Filterlogik
-                const cells = line.split('|').map(c => c.trim()).filter(c => c !== '');
-                
-                if (cells.length > 0) {
-                    html += '<tr>';
-                    cells.forEach((cell, cellIndex) => {
