@@ -10,19 +10,17 @@
         h1 { margin: 0; font-size: 2em; }
         a.back-btn { display: inline-block; margin-bottom: 20px; color: #3498db; text-decoration: none; font-weight: bold; }
         a.back-btn:hover { text-decoration: underline; }
-        
         .accordion-item { background: white; margin-bottom: 10px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); overflow: hidden; }
         .accordion-header { background: #edf2f7; padding: 15px 20px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; user-select: none; }
         .accordion-header:hover { background: #e2e8f0; }
         .accordion-content { padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease-out; background: #fff; }
         .accordion-content.active { padding: 20px; max-height: 1200px; }
-        
         .image-placeholder { background-color: #f0f3f4; border: 2px dashed #7f8c8d; color: #34495e; padding: 30px; text-align: center; font-weight: bold; margin: 15px 0; }
-        
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         th, td { border: 1px solid #cbd5e0; padding: 10px 12px; text-align: left; }
-        th { background: #f7fafc; color: #4a5568; }
+        th { background: #f7fafc; color: #4a5568; font-weight: bold; }
         tr:hover { background-color: #f8fafc; }
+        .total-row { background-color: #f7fafc; font-weight: bold; border-top: 2px solid #cbd5e0; }
         .text-center { text-align: center; }
         .text-right { text-align: right; }
     </style>
@@ -36,29 +34,4 @@
 
     <div class="accordion-item">
         <div class="accordion-header" onclick="toggleAccordion('model_1', this)">Model 1: The Explorer <span>+</span></div>
-        <div id="model_1" class="accordion-content">
-            <div class="image-placeholder">[Image: model_1]</div>
-            <div class="dynamic-text">Loading data...</div>
-            <div class="dynamic-table">Loading specifications...</div>
-        </div>
-    </div>
-
-    <div class="accordion-item">
-        <div class="accordion-header" onclick="toggleAccordion('model_2', this)">Model 2: Speedster Edition <span>+</span></div>
-        <div id="model_2" class="accordion-content">
-            <div class="image-placeholder">[Image: model_2]</div>
-            <div class="dynamic-text">Loading data...</div>
-            <div class="dynamic-table">Loading specifications...</div>
-        </div>
-    </div>
-
-    <script>
-        function parseMarkdownTable(markdownText) {
-            const lines = markdownText.trim().split('\n');
-            if (lines.length < 2) return '';
-            
-            let html = '<table>';
-            lines.forEach((line, index) => {
-                if (line.includes('---')) return; // Trennzeile überspringen
-                
-                const cells = line.split('|').map(c => c.trim()).filter(c => c !== '');
+        <div id="model_1
