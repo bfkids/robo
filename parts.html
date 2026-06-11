@@ -15,8 +15,10 @@
         th, td { padding: 12px 15px; border-bottom: 1px solid #edf2f7; }
         th { background-color: #f7fafc; color: #4a5568; font-weight: bold; }
         tr:hover { background-color: #f8fafc; }
+        .total-row { background-color: #f7fafc; font-weight: bold; border-top: 2px solid #cbd5e0; }
         .text-center { text-align: center; }
         .text-right { text-align: right; }
+        .loading-msg { padding: 20px; text-align: center; font-style: italic; color: #7f8c8d; }
     </style>
 </head>
 <body>
@@ -28,33 +30,42 @@
     <p>Here is the complete BOM (Bill of Materials) required to build your basic BreadSnowBot Robot:</p>
 
     <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th class="text-center">Qty</th>
-                    <th>Component / Part</th>
-                    <th>Part Number</th>
-                    <th>Source</th>
-                    <th class="text-right">Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td class="text-center">2</td><td>Adafruit Multi-Hub Wheel (Universal 65mm, TT / LEGO / N20 compatible, Black)</td><td>ADA4205</td><td>BerryBase</td><td class="text-right">3.90 €</td></tr>
-                <tr><td class="text-center">1</td><td>Pololu Ball Caster (0.5 inch)</td><td>POL9533</td><td>BerryBase</td><td class="text-right">2.70 €</td></tr>
-                <tr><td class="text-center">2</td><td>Technic Liftarm 1x7</td><td>4495931</td><td>klickbricks</td><td class="text-right">0.50 €</td></tr>
-                <tr><td class="text-center">4</td><td>Technic Liftarm 1x3</td><td>4210751</td><td>klickbricks</td><td class="text-right">0.56 €</td></tr>
-                <tr><td class="text-center">1</td><td>HC-SR04 Ultrasonic Sensor</td><td>HC-SR04</td><td>BerryBase</td><td class="text-right">1.49 €</td></tr>
-                <tr><td class="text-center">1</td><td>BerryBase HackberryPi Zero BL5C Charger (incl. 1020mAh Battery with auto-cutoff)</td><td>BL5C-CHARGE</td><td>BerryBase</td><td class="text-right">7.20 €</td></tr>
-                <tr><td class="text-center">1</td><td>Breadboard with 400 Tie-Points</td><td>BB-400P</td><td>BerryBase</td><td class="text-right">1.50 €</td></tr>
-                <tr><td class="text-center">1</td><td>Jumper Wire Box / Set with 140 Jumpers (14 different lengths for Breadboards)</td><td>JUMPERBOX</td><td>BerryBase</td><td class="text-right">3.70 €</td></tr>
-                <tr><td class="text-center">1</td><td>40pin Jumper / Dupont Wire Set (1x F-F / M-M / F-M, 10cm)</td><td>DUPK-SET-10</td><td>BerryBase</td><td class="text-right">4.40 €</td></tr>
-                <tr><td class="text-center">1</td><td>3-Pin Slide Switch for Breadboards</td><td>BB-SWITCH-3P</td><td>BerryBase</td><td class="text-right">0.55 €</td></tr>
-                <tr><td class="text-center">1</td><td>M5Stack Servo Kit 360°</td><td>M5-A076-C</td><td>BerryBase</td><td class="text-right">10.80 €</td></tr>
-                <tr><td class="text-center">4</td><td>Technic Connector Pin 2M</td><td>278026</td><td>klickbricks</td><td class="text-right">0.18 €</td></tr>
-                <tr><td class="text-center">1</td><td>Raspberry Pi Pico 2 (RP2350 Microcontroller Board, with Headers)</td><td>RPI.PICO2-H</td><td>BerryBase</td><td class="text-right">5.90 €</td></tr>
-                <tr><td class="text-center">1</td><td>USB-A Cable (10cm)</td><td>-</td><td>-</td><td class="text-right">0.00 €</td></tr>
-            </tbody>
-        </table>
+        <div id="loading" class="loading-msg">Loading parts list from parts.txt...</div>
+        <div id="table-wrapper" style="display: none;">
+            <table id="parts-table">
+                </table>
+        </div>
     </div>
-</body>
-</html>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('parts.txt')
+                .then(response => {
+                    if (!response.ok) throw new Error('Could not load parts.txt');
+                    return response.text();
+                })
+                .then(markdownText => {
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('table-wrapper').style.display = 'block';
+                    
+                    const lines = markdownText.trim().split('\n');
+                    const tableElement = document.getElementById('parts-table');
+                    
+                    let html = '';
+                    let isFirstRow = true;
+                    let totalSum = 0;
+
+                    lines.forEach((line) => {
+                        if (line.includes('---') || line.trim() === '') return;
+                        
+                        // Trenne die Zellen anhand des Pipes-Symbols und entferne Ränder
+                        const cells = line.split('|').map(c => c.trim()).filter((c, i, a) => i > 0 && i < a.length - 1);
+                        
+                        if (cells.length > 0) {
+                            html += '<tr>';
+                            cells.forEach((cell, cellIndex) => {
+                                let alignClass = '';
+                                if (cellIndex === 0) alignClass = ' class="text-center"';
+                                if (cellIndex === 4) alignClass = ' class="text-right"';
+                                
+                                if (isFirstRow) {
