@@ -22,6 +22,14 @@
             text-align: center;
             margin-bottom: 30px;
         }
+        /* Styling für das neue Header-Bild */
+        .header-image {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
         h1 { margin: 0; font-size: 2.5em; }
         .subtitle { font-style: italic; color: #bdc3c7; margin-top: 5px; }
         h2 { color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; margin-top: 30px; }
@@ -65,13 +73,30 @@
             border-radius: 4px;
             font-family: monospace;
         }
+        /* Footer Styling für den neuen Link */
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        footer a {
+            color: #7f8c8d;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+            color: #2c3e50;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>BreadSnowBot Robot</h1>
-        <div class="subtitle">- Snow(ly) White</div>
+        <img src="header.jpg" alt="Mission to Mars Header" class="header-image">
+        <h1>Mission to mars - Challenge: moving around</h1>
+        <div class="subtitle">- a snow(ly)white project</div>
     </header>
 
     <div class="intro-box">
@@ -169,6 +194,10 @@
         <p>Build a third Lego wheel onto the Lego base. There are many ways how you can do this step. It is very individual and makes your robot special.</p>
         <div class="image-placeholder">[Image: image_8]</div>
     </div>
+
+    <footer>
+        <a href="about.html">About & Impressum</a>
+    </footer>
 
 </body>
 </html>
