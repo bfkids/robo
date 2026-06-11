@@ -55,13 +55,12 @@
     </header>
     
     <div class="info">
-        <p>This code is dynamically loaded from <code>code.py</code>. Save it directly onto your Raspberry Pi Pico drive.</p>
+        <p>Save this code directly to your raspberry pi pico drive as <code>code.py</code>.</p>
     </div>
 
     <pre><code id="code-box">Loading code from code.py...</code></pre>
 
     <script>
-        // Sobald die Seite geladen ist, wird die code.py-Datei abgerufen
         window.addEventListener('DOMContentLoaded', () => {
             fetch('code.py')
                 .then(response => {
@@ -71,16 +70,8 @@
                     return response.text();
                 })
                 .then(data => {
-                    // Der Text aus der code.py wird sicher in das <pre>-Tag geschrieben
                     document.getElementById('code-box').textContent = data;
                 })
                 .catch(error => {
                     document.getElementById('code-box').textContent = 
-                        'Notice: This works perfectly once pushed to GitHub Pages!\n' +
-                        '(Local browser security blocks files loaded via file://).';
-                    console.error('Error loading the code file:', error);
-                });
-        });
-    </script>
-</body>
-</html>
+                        'Notice: This works perfectly once pushed to
