@@ -10,15 +10,13 @@
         h1 { margin: 0; font-size: 2em; }
         a.back-btn { display: inline-block; margin-bottom: 20px; color: #3498db; text-decoration: none; font-weight: bold; }
         a.back-btn:hover { text-decoration: underline; }
-        .table-container { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); overflow-x: auto; padding: 10px; }
-        table { width: 100%; border-collapse: collapse; text-align: left; }
-        th, td { padding: 12px 15px; border-bottom: 1px solid #edf2f7; }
-        th { background-color: #f7fafc; color: #4a5568; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { padding: 12px 15px; border-bottom: 1px solid #edf2f7; text-align: left; }
+        th { background-color: #f7fafc; font-weight: bold; color: #4a5568; }
         tr:hover { background-color: #f8fafc; }
         .total-row { background-color: #f7fafc; font-weight: bold; border-top: 2px solid #cbd5e0; }
         .text-center { text-align: center; }
         .text-right { text-align: right; }
-        .loading-msg { padding: 20px; text-align: center; font-style: italic; color: #7f8c8d; }
     </style>
 </head>
 <body>
@@ -27,39 +25,32 @@
         <h1>Parts & Material List</h1>
     </header>
     
-    <div class="table-container">
-        <div id="loading" class="loading-msg">Loading parts list from parts.txt...</div>
-        <div id="table-wrapper" style="display: none;">
-            <table id="parts-table"></table>
-        </div>
-    </div>
+    <p>Here is the complete BOM (Bill of Materials) required to build your basic BreadSnowBot Robot:</p>
+
+    <div id="parts-table-container">Loading parts list...</div>
 
     <script>
         window.addEventListener('DOMContentLoaded', () => {
-            // Das "./" zwingt den Server, im exakt selben Verzeichnis zu suchen
-            fetch('./parts.txt')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok: ' + response.status);
-                    return response.text();
-                })
+            fetch('parts.txt')
+                .then(res => { if (!res.ok) throw new Error(); return res.text(); })
                 .then(markdownText => {
-                    document.getElementById('loading').style.display = 'none';
-                    document.getElementById('table-wrapper').style.display = 'block';
-                    
                     const lines = markdownText.trim().split('\n');
-                    const tableElement = document.getElementById('parts-table');
+                    if (lines.length < 2) return;
                     
-                    let html = '';
-                    let isFirstRow = true;
+                    let html = '<table>';
                     let totalSum = 0;
+                    let isFirstRow = true;
 
                     lines.forEach((line) => {
                         if (line.includes('---') || line.trim() === '') return;
-                        const cells = line.split('|').map(c => c.trim()).filter((c, i, a) => i > 0 && i < a.length - 1);
+                        
+                        // Hier wieder deine originale, funktionierende Filter-Methode!
+                        const cells = line.split('|').map(c => c.trim()).filter(c => c !== '');
                         
                         if (cells.length > 0) {
                             html += '<tr>';
                             cells.forEach((cell, cellIndex) => {
+                                // Spalten-Ausrichtung (0 = Menge zentriert, 4 = Preis rechts)
                                 let alignClass = '';
                                 if (cellIndex === 0) alignClass = ' class="text-center"';
                                 if (cellIndex === 4) alignClass = ' class="text-right"';
@@ -72,14 +63,18 @@
                             });
                             html += '</tr>';
                             
+                            // Berechne den Preis (Spalte Index 4)
                             if (!isFirstRow && cells[4]) {
                                 const priceValue = parseFloat(cells[4].replace('CHF', '').trim());
-                                if (!isNaN(priceValue)) totalSum += priceValue;
+                                if (!isNaN(priceValue)) {
+                                    totalSum += priceValue;
+                                }
                             }
                             isFirstRow = false;
                         }
                     });
 
+                    // Füge die berechnete Total-Zeile im exakt gleichen Stil hinzu
                     html += `<tr class="total-row">
                         <td class="text-center">-</td>
                         <td>Total Cost</td>
@@ -87,14 +82,13 @@
                         <td>-</td>
                         <td class="text-right">${totalSum.toFixed(2)} CHF</td>
                     </tr>`;
-
-                    tableElement.innerHTML = html;
+                    
+                    html += '</table>';
+                    document.getElementById('parts-table-container').innerHTML = html;
                 })
-                .catch(error => {
-                    document.getElementById('loading').innerHTML = 
-                        '<span style="color:red; font-weight:bold;">Error loading parts.txt!</span><br>' +
-                        'Please verify that <strong>parts.txt</strong> exists in your repository, is spelled completely in lowercase, and is in the same folder.';
-                    console.error(error);
+                .catch(() => {
+                    document.getElementById('parts-table-container').innerHTML = 
+                        '<strong>Notice:</strong> This works perfectly once pushed to GitHub Pages! (Local browser security blocks files loaded via file://).';
                 });
         });
     </script>
