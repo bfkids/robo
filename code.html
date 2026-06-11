@@ -5,47 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BreadSnowBot Robot - CircuitPython Code</title>
     <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            line-height: 1.6; 
-            color: #333; 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            background-color: #f9f9f9; 
-        }
-        header { 
-            background-color: #2c3e50; 
-            color: white; 
-            padding: 20px; 
-            border-radius: 8px; 
-            text-align: center; 
-            margin-bottom: 25px; 
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
+        header { background-color: #2c3e50; color: white; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 25px; }
         h1 { margin: 0; font-size: 2em; }
-        a.back-btn { 
-            display: inline-block; 
-            margin-bottom: 20px; 
-            color: #3498db; 
-            text-decoration: none; 
-            font-weight: bold; 
-        }
+        a.back-btn { display: inline-block; margin-bottom: 20px; color: #3498db; text-decoration: none; font-weight: bold; }
         a.back-btn:hover { text-decoration: underline; }
-        pre { 
-            background-color: #2d3748; 
-            color: #f7fafc; 
-            padding: 20px; 
-            border-radius: 8px; 
-            overflow-x: auto; 
-            font-family: 'Courier New', Courier, monospace; 
-        }
-        .info { 
-            background-color: #e8f4f8; 
-            padding: 15px; 
-            border-radius: 6px; 
-            border-left: 4px solid #3498db; 
-            margin-bottom: 20px; 
-        }
+        pre { background-color: #2d3748; color: #f7fafc; padding: 20px; border-radius: 8px; overflow-x: auto; font-family: 'Courier New', Courier, monospace; }
+        .info { background-color: #e8f4f8; padding: 15px; border-radius: 6px; border-left: 4px solid #3498db; margin-bottom: 20px; }
     </style>
 </head>
 <body>
@@ -64,9 +30,7 @@
         window.addEventListener('DOMContentLoaded', () => {
             fetch('code.py')
                 .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Could not find code.py');
-                    }
+                    if (!response.ok) throw new Error('File not found');
                     return response.text();
                 })
                 .then(data => {
@@ -74,4 +38,10 @@
                 })
                 .catch(error => {
                     document.getElementById('code-box').textContent = 
-                        'Notice: This works perfectly once pushed to
+                        'Notice: Loaded via GitHub Pages, this displays properly!\n' +
+                        'Make sure code.py exists in your repository and is lowercase.';
+                });
+        });
+    </script>
+</body>
+</html>
