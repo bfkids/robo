@@ -1,4 +1,4 @@
-| Qty | Component / Part | Part Number | Source | Price |
+| Qty | Part | Part Number | Source | Price |
 | --- | --- | --- | --- | --- |
 | 2 | Adafruit Multi-Hub Wheel (Universal 65mm, TT / LEGO / N20 compatible, Black) | ADA4205 | BerryBase | 3.90 CHF |
 | 1 | Pololu Ball Caster (0.5 inch) | POL9533 | BerryBase | 2.70 CHF |
