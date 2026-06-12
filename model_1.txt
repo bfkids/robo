@@ -1,5 +1,5 @@
-BreadSnowBot Model 1: Speedster Edition
-The Speedster edition rearranges the weight alignment over the battery pack and uses larger custom wheels to reach much higher top speeds on flat surfaces.
+BreadSnowBot Model 1: GoFast Edition
+
 
 ## Specifications
 | Qty | Part | Part Number | Source | Price |
