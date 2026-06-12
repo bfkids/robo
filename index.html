@@ -57,4 +57,77 @@
         .step {
             background: white;
             padding: 25px;
-            border-radius: 8px
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        .step h3 { margin-top: 0; color: #e67e22; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        
+        /* Normales Bild-Styling: Passt sich sauber in die Box ein */
+        .step img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+        
+        .warning { color: #c0392b; font-weight: bold; }
+        .crucial { color: #d35400; font-weight: bold; }
+        .code-snippet {
+            background-color: #2d3748;
+            color: #f7fafc;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        footer a {
+            color: #7f8c8d;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="overtitle">Mission to mars - Challenge: moving around</div>
+        <h1>BreadSnowBot Robot</h1>
+        <div class="subtitle">- a snow(ly)white project</div>
+    </header>
+
+    <div class="intro-box">
+        <p>The BreadSnowBot Robot is a half-size breadboard robot with a Raspberry Pi Micro Controller plugged into it, and two servo motors which work with a battery pack.</p>
+        <p>This is a step-by-step guide on how to build the BreadSnowBot Robot all by yourself.</p>
+        
+        <h3>Reasons why you should follow our guide and build this robot:</h3>
+        <ul>
+            <li>There are no risks in building this robot.</li>
+            <li>If you're interested in tech, this robot will bring you lots of wonderful moments of success.</li>
+            <li>You’ll learn basic programming skills in CircuitPython.</li>
+            <li>You can extend it with your own Lego pieces that you already have at home.</li>
+        </ul>
+        
+        <p>This is the perfect opportunity to build your very first robot. The difference between the BreadSnowBot Robot and normal robots is that you have to program everything from the very start. This will help you to really understand how programs and robots work.</p>
+    </div>
+
+    <h2>Requirements</h2>
+    <div class="intro-box">
+        <ul>
+            <li>You are patient and motivated to build a robot and to understand what programming is really about.</li>
+            <li>You have some technical knowledge and you are ready to gain more.</li>
+        </ul>
+        <p>If you follow the instructions below, you’ll have your
