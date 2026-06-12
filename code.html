@@ -55,7 +55,8 @@
     </header>
     
     <div class="info">
-        <p>Save this code directly to your raspberry pi pico drive as <code>code.py</code>.</p>
+        <p><strong>Important First Step:</strong> Make sure you have flashed your Raspberry Pi Pico with the CircuitPython firmware as described here: <a href="https://circuitpython.org/board/raspberry_pi_pico/" target="_blank" style="color: #2980b9; font-weight: bold; text-decoration: none;">CircuitPython Installation Guide</a>.</p>
+        <p>After doing that, save the code below directly to your Raspberry Pi Pico drive as <code>code.py</code>.</p>
     </div>
 
     <pre><code id="code-box">Loading code from code.py...</code></pre>
@@ -73,12 +74,4 @@
                     document.getElementById('code-box').textContent = data;
                 })
                 .catch(error => {
-                    document.getElementById('code-box').textContent = 
-                        'Notice: This works perfectly once pushed to GitHub Pages!\n' +
-                        '(Local browser security blocks files loaded via file://).';
-                    console.error('Error loading the code file:', error);
-                });
-        });
-    </script>
-</body>
-</html>
+                    document.getElementById
