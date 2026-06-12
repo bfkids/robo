@@ -1,5 +1,4 @@
 BreadSnowBot Model 2: Speedster Edition
-The Speedster edition rearranges the weight alignment over the battery pack and uses larger custom wheels to reach much higher top speeds on flat surfaces.
 
 ## Specifications
 | Qty | Part | Part Number | Source | Price |
