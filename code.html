@@ -38,12 +38,12 @@
         }
         a.back-btn:hover { text-decoration: underline; }
 
-        /* Container für Code & Copy Button */
+        /* Container für Code & GitHub Link-Button */
         .code-container {
             position: relative;
             margin-top: 10px;
         }
-        .copy-btn {
+        .github-forward-btn {
             position: absolute;
             top: 12px;
             right: 12px;
@@ -52,9 +52,77 @@
             border: 1px solid rgba(255, 255, 255, 0.4);
             padding: 6px 12px;
             border-radius: 4px;
-            cursor: pointer;
+            text-decoration: none;
             font-size: 0.85em;
+            font-weight: bold;
             transition: all 0.2s;
         }
-        .copy-btn:hover {
-            background-color: rgba(255, 255,
+        .github-forward-btn:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #2d3748;
+        }
+
+        pre { 
+            background-color: #2d3748; 
+            color: #f7fafc; 
+            padding: 20px; 
+            padding-top: 45px; /* Platz für den Button */
+            border-radius: 8px; 
+            overflow-x: auto; 
+            font-family: 'Courier New', Courier, monospace; 
+            margin: 0;
+        }
+        .info { 
+            background-color: #e8f4f8; 
+            padding: 15px; 
+            border-radius: 6px; 
+            border-left: 4px solid #3498db; 
+            margin-bottom: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-links">
+        <a href="index.html" class="back-btn">&larr; Back to Guide</a>
+    </div>
+
+    <header>
+        <h1>CircuitPython Code</h1>
+    </header>
+    
+    <div class="info">
+        <p><strong>Important First Step:</strong> Make sure you have flashed your Raspberry Pi Pico with the CircuitPython firmware as described here: <a href="https://circuitpython.org/board/raspberry_pi_pico/" target="_blank" style="color: #2980b9; font-weight: bold; text-decoration: none;">CircuitPython Installation Guide</a>.</p>
+        <p>After doing that, save the code below directly to your Raspberry Pi Pico drive as <code>code.py</code>.</p>
+    </div>
+
+    <div class="code-container">
+        <a href="https://github.com/bfkids/robo/blob/main/code.py" target="_blank" class="github-forward-btn">GitHub &rarr;</a>
+        <pre><code id="code-box">Loading code from code.py...</code></pre>
+    </div>
+
+    <script>
+        const codeBox = document.getElementById('code-box');
+
+        // Code über Fetch laden (funktioniert auf GitHub Pages)
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('code.py')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Could not find code.py');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    codeBox.textContent = data;
+                })
+                .catch(error => {
+                    codeBox.textContent = 
+                        'Notice: This works perfectly once pushed to GitHub Pages!\n' +
+                        '(Local browser security blocks files loaded via file://).\n\n' +
+                        'Use the GitHub button in the top right of this box to view the code.';
+                    console.error('Error loading the code file:', error);
+                });
+        });
+    </script>
+</body>
+</html>
