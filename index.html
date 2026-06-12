@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,4 +56,162 @@
         }
         .navigation-links ol { margin: 0; padding-left: 20px; }
         .navigation-links a { color: #2980b9; font-weight: bold; text-decoration: none; }
-        .
+        .navigation-links a:hover { text-decoration: underline; }
+        .step {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        .step h3 { margin-top: 0; color: #e67e22; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        
+        /* Bild-Styling: Automatische Skalierung für vorhandene Bilder */
+        .step img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 6px;
+            margin-top: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .warning { color: #c0392b; font-weight: bold; }
+        .crucial { color: #d35400; font-weight: bold; }
+        .code-snippet {
+            background-color: #2d3748;
+            color: #f7fafc;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        
+        /* Footer für den Impressums-Link ganz zuletzt */
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        footer a {
+            color: #7f8c8d;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="overtitle">Mission to mars - Challenge: moving around</div>
+        <h1>BreadSnowBot Robot</h1>
+        <div class="subtitle">- a snow(ly)white project</div>
+    </header>
+
+    <div class="intro-box">
+        <p>The BreadSnowBot Robot is a half-size breadboard robot with a Raspberry Pi Micro Controller plugged into it, and two servo motors which work with a battery pack.</p>
+        <p>This is a step-by-step guide on how to build the BreadSnowBot Robot all by yourself.</p>
+        
+        <h3>Reasons why you should follow our guide and build this robot:</h3>
+        <ul>
+            <li>There are no risks in building this robot.</li>
+            <li>If you're interested in tech, this robot will bring you lots of wonderful moments of success.</li>
+            <li>You’ll learn basic programming skills in CircuitPython.</li>
+            <li>You can extend it with your own Lego pieces that you already have at home.</li>
+        </ul>
+        
+        <p>This is the perfect opportunity to build your very first robot. The difference between the BreadSnowBot Robot and normal robots is that you have to program everything from the very start. This will help you to really understand how programs and robots work.</p>
+    </div>
+
+    <h2>Requirements</h2>
+    <div class="intro-box">
+        <ul>
+            <li>You are patient and motivated to build a robot and to understand what programming is really about.</li>
+            <li>You have some technical knowledge and you are ready to gain more.</li>
+        </ul>
+        <p>If you follow the instructions below, you’ll have your very first robot in less than a week (if you work a normal amount of time on it).</p>
+    </div>
+
+    <div class="navigation-links">
+        <h3>Resources & Navigation</h3>
+        <ol>
+            <li><a href="parts.html">Click here</a> to look at all the parts/material list for your basic BreadSnowBot Robot.</li>
+            <li><a href="code.html">Click here</a> to get your CircuitPython code for the BreadSnowBot Robot.</li>
+            <li><a href="models.html">Click here</a> to get inspired with different models.</li>
+        </ol>
+    </div>
+
+    <h2>Instructions</h2>
+
+    <div class="step">
+        <h3>Step 1</h3>
+        <p>Unpack your servo kit (360) and your breadboard.</p>
+        <p>Take off the plastic from the self-adhesive breadboard and stick it on the battery pack. Then glue the Lego base onto the battery pack. Then you have one glued-together block that contains the battery pack, the breadboard, and the Lego base.</p>
+        <p class="warning">Be careful and DON’T glue the breadboard onto the battery pack LED lights.</p>
+        <img src="image_1.jpg" alt="Step 1" onerror="this.style.display='none';">
+    </div>
+
+    <div class="step">
+        <h3>Step 2</h3>
+        <p>Stick the Raspberry Pi Pico Pinout onto the breadboard, leaving two squares empty on the left and on the right. The Controller should be between 1-20 and C-H.</p>
+        <img src="image_2.jpg" alt="Step 2" onerror="this.style.display='none';">
+    </div>
+
+    <div class="step">
+        <h3>Step 3</h3>
+        <p>Connect the 2 servos (from the servo kit) to the Lego base with 2 black Lego pins (see material list). Click them onto the side of the Lego base where the LED lights are.</p>
+        <img src="image_3.jpg" alt="Step 3" onerror="this.style.display='none';">
+    </div>
+
+    <div class="step">
+        <h3>Step 4</h3>
+        <p>Glue the two jumper cables to the right front side of the breadboard. I recommend doing this with hot glue, please be careful that you don't burn yourself. The cable end has two sides; don't put hot glue onto the side where you can see metal. So glue the normal side onto the breadboard.</p>
+        <img src="image_4.jpg" alt="Step 4" onerror="this.style.display='none';">
+    </div>
+
+    <div class="step">
+        <h3>Step 5</h3>
+        <p>Stow away the cables between the servos. And put the wheel axis pins onto the servo (on each side), then add a wheel on each side.</p>
+        <img src="image_5.jpg" alt="Step 5" onerror="this.style.display='none';">
+    </div>
+
+    <div class="step">
+        <h3>Step 6</h3>
+        <p class="crucial">Wire the jumper bridge, this step is very crucial for your robot. It's very important that you complete this step with a lot of patience.</p>
+        <p>Choose 4 jumper bridges and stick them into the following places on the breadboard. You now need to make bridges between the breadboard and the ends of the jumper cables we glued onto the breadboard in step 4. Make sure the cables really stick well into the breadboard.</p>
+        <ul>
+            <li>Green cable 1: <span class="code-snippet">i12</span> and first hole</li>
+            <li>Brown cable: <span class="code-snippet">+7</span> and second hole</li>
+            <li>Blue cable 1: <span class="code-snippet">-6</span> and third hole</li>
+            <li>Yellow cable 1: <span class="code-snippet">i7</span> and fourth hole</li>
+            <li>Red cable 1: <span class="code-snippet">+4</span> and fifth hole</li>
+            <li>Blue cable 2: <span class="code-snippet">-2</span> and sixth hole</li>
+            <li>Grey cable 2: <span class="code-snippet">j3</span> and <span class="code-snippet">-1</span></li>
+            <li>Green cable 2: <span class="code-snippet">j1</span> and <span class="code-snippet">+1</span></li>
+        </ul>
+        <img src="image_6.jpg" alt="Step 6" onerror="this.style.display='none';">
+    </div>
+
+    <div class="step">
+        <h3>Step 7</h3>
+        <p>Wire the ultrasonic sensor as shown in the picture and install the switch. Load the code onto the Pi Pico.</p>
+        <img src="image_7.jpg" alt="Step 7" onerror="this.style.display='none';">
+    </div>
+
+    <div class="step">
+        <h3>Step 8</h3>
+        <p>Build a third Lego wheel onto the Lego base. There are many ways how you can do this step. It is very individual and makes your robot special.</p>
+        <img src="image_8.jpg" alt="Step 8" onerror="this.style.display='none';">
+    </div>
+
+    <footer>
+        <a href="about.html">About & Impressum</a>
+    </footer>
+
+</body>
+</html>
