@@ -23,39 +23,20 @@
             margin-bottom: 25px; 
         }
         h1 { margin: 0; font-size: 2em; }
+        
+        /* Navigations-Leiste über dem Header */
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
         a.back-btn { 
             display: inline-block; 
-            margin-bottom: 20px; 
             color: #3498db; 
             text-decoration: none; 
             font-weight: bold; 
         }
         a.back-btn:hover { text-decoration: underline; }
-        
-        /* GitHub Link Box Styling */
-        .github-actions {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .gh-btn {
-            flex: 1;
-            min-width: 200px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #24292e;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.2s;
-        }
-        .gh-btn:hover { background-color: #555; }
-        .gh-btn.download-btn { background-color: #2ecc71; }
-        .gh-btn.download-btn:hover { background-color: #27ae60; }
 
         /* Container für Code & Copy Button */
         .code-container {
@@ -76,95 +57,4 @@
             transition: all 0.2s;
         }
         .copy-btn:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #2d3748;
-        }
-
-        pre { 
-            background-color: #2d3748; 
-            color: #f7fafc; 
-            padding: 20px; 
-            padding-top: 45px; /* Platz für den Button */
-            border-radius: 8px; 
-            overflow-x: auto; 
-            font-family: 'Courier New', Courier, monospace; 
-            margin: 0;
-        }
-        .info { 
-            background-color: #e8f4f8; 
-            padding: 15px; 
-            border-radius: 6px; 
-            border-left: 4px solid #3498db; 
-            margin-bottom: 20px; 
-        }
-    </style>
-</head>
-<body>
-    <a href="index.html" class="back-btn">&larr; Back to Guide</a>
-    <header>
-        <h1>CircuitPython Code</h1>
-    </header>
-    
-    <div class="info">
-        <p><strong>Important First Step:</strong> Make sure you have flashed your Raspberry Pi Pico with the CircuitPython firmware as described here: <a href="https://circuitpython.org/board/raspberry_pi_pico/" target="_blank" style="color: #2980b9; font-weight: bold; text-decoration: none;">CircuitPython Installation Guide</a>.</p>
-        <p>After doing that, save the code below directly to your Raspberry Pi Pico drive as <code>code.py</code>.</p>
-    </div>
-
-    <div class="github-actions">
-        <a href="https://github.com/bfkids/robo/blob/main/code.py" target="_blank" class="gh-btn">
-            View on GitHub
-        </a>
-    </div>
-
-    <div class="code-container">
-        <button class="copy-btn" id="copy-button">Copy Code</button>
-        <pre><code id="code-box">Loading code from code.py...</code></pre>
-    </div>
-
-    <script>
-        const codeBox = document.getElementById('code-box');
-        const copyBtn = document.getElementById('copy-button');
-
-        // Code über Fetch laden (funktioniert auf GitHub Pages)
-        window.addEventListener('DOMContentLoaded', () => {
-            fetch('code.py')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Could not find code.py');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    codeBox.textContent = data;
-                })
-                .catch(error => {
-                    codeBox.textContent = 
-                        'Notice: This works perfectly once pushed to GitHub Pages!\n' +
-                        '(Local browser security blocks files loaded via file://).\n\n' +
-                        'Use the GitHub links above to view or download the code locally.';
-                    console.error('Error loading the code file:', error);
-                });
-        });
-
-        // Kopier-Funktion für den Button
-        copyBtn.addEventListener('click', () => {
-            // Verhindert das Kopieren des Fehlertextes, falls die Datei lokal blockiert wird
-            if (codeBox.textContent.includes('Notice: This works perfectly')) {
-                alert('Code could not be loaded locally. Please use the GitHub links above to copy.');
-                return;
-            }
-
-            navigator.clipboard.writeText(codeBox.textContent)
-                .then(() => {
-                    copyBtn.textContent = 'Copied!';
-                    setTimeout(() => {
-                        copyBtn.textContent = 'Copy Code';
-                    }, 2000);
-                })
-                .catch(err => {
-                    console.error('Failed to copy text: ', err);
-                });
-        });
-    </script>
-</body>
-</html>
+            background-color: rgba(255, 255,
