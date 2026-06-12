@@ -3,7 +3,7 @@ import board
 import pwmio
 import digitalio
 
-# --- SETUP DISTANZSENSOR (3.3V) ---
+# --- SETUP DISTANCE SENSOR (3.3V) ---
 trig = digitalio.DigitalInOut(board.GP14)
 trig.direction = digitalio.Direction.OUTPUT
 echo = digitalio.DigitalInOut(board.GP15)
@@ -14,25 +14,25 @@ echo.pull = None
 led = digitalio.DigitalInOut(board.LED)
 led.direction = digitalio.Direction.OUTPUT
 
-# --- SETUP SCHALTER ---
+# --- SETUP SWITCH ---
 start_button = digitalio.DigitalInOut(board.GP1)
 start_button.direction = digitalio.Direction.INPUT
 start_button.pull = digitalio.Pull.UP
 
-# --- PWM WERTE ---
-s = 4915  # Stopp
-v = 6000  # Vorwärts 
-r = 3830  # Rückwärts (angepasst an v=6000)
-k = 4260  # Kurve
+# --- PWM VALUES ---
+s = 4915  # Stop
+f = 6000  # Forward 
+b = 3830  # Backward (adjusted to f=6000)
+t = 4260  # Turn
 
-# --- SETUP MOTOREN ---
-pwm_links = pwmio.PWMOut(board.GP22, frequency=50, duty_cycle=s)
-pwm_rechts = pwmio.PWMOut(board.GP28, frequency=50, duty_cycle=s)
+# --- SETUP MOTORS ---
+pwm_left = pwmio.PWMOut(board.GP22, frequency=50, duty_cycle=s)
+pwm_right = pwmio.PWMOut(board.GP28, frequency=50, duty_cycle=s)
 
-# --- SENSOREN ---
-def distanz():
+# --- SENSORS ---
+def distance():
     trig.value = False
-    time.sleep(0.01) # Kurze Beruhigungspause vor Messung
+    time.sleep(0.01) # Short settling period before measurement
     trig.value = True
     time.sleep(0.00001)
     trig.value = False
@@ -48,51 +48,50 @@ def distanz():
     
     return (t_1 - t_0) * 17150
 
-# --- AKTOREN ---
-def blink(anzahl):
-    for i in range(anzahl):
+# --- ACTUATORS ---
+def blink(count):
+    for i in range(count):
         led.value = True
         time.sleep(0.1)
         led.value = False
         time.sleep(0.1)
         
 def stop(): 
-    pwm_links.duty_cycle = s 
-    pwm_rechts.duty_cycle = s
+    pwm_left.duty_cycle = s 
+    pwm_right.duty_cycle = s
     time.sleep(0.1)
 
-def vor(): 
-    pwm_links.duty_cycle = v
-    pwm_rechts.duty_cycle = r
+def forward(): 
+    pwm_left.duty_cycle = f
+    pwm_right.duty_cycle = b
 
-def kurve(): 
-    # Dreht auf der Stelle
-    pwm_links.duty_cycle = k
-    pwm_rechts.duty_cycle = k
+def turn(): 
+    # Turns on the spot
+    pwm_left.duty_cycle = t
+    pwm_right.duty_cycle = t
     time.sleep(0.3) 
     stop()
 
 
-# --- HAUPTPROGRAMM ---
-stop() # Initialer Stopp
+# --- MAIN PROGRAM ---
+stop() # Initial stop
 
 while True:
-    # Schalter ist EIN
+    # Switch is ON
     if not start_button.value:
-        d = distanz()
+        d = distance()
         
         if d < 10: 
             stop() 
             blink(3)
-            kurve()
+            turn()
             stop()
             
         else:
-            vor()
+            forward()
     else:
-        # Schalter ist AUS
+        # Switch is OFF
         stop()
         led.value = False
 
 time.sleep(0.05)
-    
