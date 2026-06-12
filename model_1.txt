@@ -2,7 +2,7 @@ BreadSnowBot Model 1: Speedster Edition
 The Speedster edition rearranges the weight alignment over the battery pack and uses larger custom wheels to reach much higher top speeds on flat surfaces.
 
 ## Specifications
-| Qty | Component / Part | Part Number | Source | Price |
+| Qty | Part | Part Number | Source | Price |
 | --- | --- | --- | --- | --- |
 | 2 | Adafruit Multi-Hub Wheel (Universal 65mm, Black) | ADA4205 | BerryBase | 3.90 € |
 | 4 | Technic Liftarm 1x3 | 4210751 | klickbricks | 0.56 € |
