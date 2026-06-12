@@ -15,7 +15,7 @@
             background-color: #f9f9f9;
         }
         
-        /* Flexibler Header: Lädt das Bild im Hintergrund und dunkelt es ab. */
+        /* Der originale Header mit der Abdunkelung */
         header {
             position: relative;
             background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('header.jpg');
@@ -63,7 +63,6 @@
         }
         .step h3 { margin-top: 0; color: #e67e22; border-bottom: 1px solid #eee; padding-bottom: 5px; }
         
-        /* Normales Bild-Styling: Passt sich sauber in die Box ein */
         .step img {
             display: block;
             width: 100%;
@@ -130,4 +129,65 @@
             <li>You are patient and motivated to build a robot and to understand what programming is really about.</li>
             <li>You have some technical knowledge and you are ready to gain more.</li>
         </ul>
-        <p>If you follow the instructions below, you’ll have your
+        <p>If you follow the instructions below, you’ll have your very first robot in less than a week (if you work a normal amount of time on it).</p>
+    </div>
+
+    <div class="navigation-links">
+        <h3>Resources & Navigation</h3>
+        <ol>
+            <li><a href="parts.html">Click here</a> to look at all the parts/material list for your basic BreadSnowBot Robot.</li>
+            <li><a href="code.html">Click here</a> to get your CircuitPython code for the BreadSnowBot Robot.</li>
+            <li><a href="models.html">Click here</a> to get inspired with different models.</li>
+        </ol>
+    </div>
+
+    <h2>Instructions</h2>
+
+    <div class="step">
+        <h3>Step 1</h3>
+        <p>Unpack your servo kit (360) and your breadboard.</p>
+        <p>Take off the plastic from the self-adhesive breadboard and stick it on the battery pack. Then glue the Lego base onto the battery pack. Then you have one glued-together block that contains the battery pack, the breadboard, and the Lego base.</p>
+        <p class="warning">Be careful and DON’T glue the breadboard onto the battery pack LED lights.</p>
+        <img src="image_1.jpg" alt="Step 1">
+    </div>
+
+    <div class="step">
+        <h3>Step 2</h3>
+        <p>Stick the Raspberry Pi Pico Pinout onto the breadboard, leaving two squares empty on the left and on the right. The Controller should be between 1-20 and C-H.</p>
+        <img src="image_2.jpg" alt="Step 2">
+    </div>
+
+    <div class="step">
+        <h3>Step 3</h3>
+        <p>Connect the 2 servos (from the servo kit) to the Lego base with 2 black Lego pins (see material list). Click them onto the side of the Lego base where the LED lights are.</p>
+        <img src="image_3.jpg" alt="Step 3">
+    </div>
+
+    <div class="step">
+        <h3>Step 4</h3>
+        <p>Glue the two jumper cables to the right front side of the breadboard. I recommend doing this with hot glue, please be careful that you don't burn yourself. The cable end has two sides; don't put hot glue onto the side where you can see metal. So glue the normal side onto the breadboard.</p>
+        <img src="image_4.jpg" alt="Step 4">
+    </div>
+
+    <div class="step">
+        <h3>Step 5</h3>
+        <p>Stow away the cables between the servos. And put the wheel axis pins onto the servo (on each side), then add a wheel on each side.</p>
+        <img src="image_5.jpg" alt="Step 5">
+    </div>
+
+    <div class="step">
+        <h3>Step 6</h3>
+        <p class="crucial">Wire the jumper bridge, this step is very crucial for your robot. It's very important that you complete this step with a lot of patience.</p>
+        <p>Choose 4 jumper bridges and stick them into the following places on the breadboard. You now need to make bridges between the breadboard and the ends of the jumper cables we glued onto the breadboard in step 4. Make sure the cables really stick well into the breadboard.</p>
+        <ul>
+            <li>Green cable 1: <span class="code-snippet">i12</span> and first hole</li>
+            <li>Brown cable: <span class="code-snippet">+7</span> and second hole</li>
+            <li>Blue cable 1: <span class="code-snippet">-6</span> and third hole</li>
+            <li>Yellow cable 1: <span class="code-snippet">i7</span> and fourth hole</li>
+            <li>Red cable 1: <span class="code-snippet">+4</span> and fifth hole</li>
+            <li>Blue cable 2: <span class="code-snippet">-2</span> and sixth hole</li>
+            <li>Grey cable 2: <span class="code-snippet">j3</span> and <span class="code-snippet">-1</span></li>
+            <li>Green cable 2: <span class="code-snippet">j1</span> and <span class="code-snippet">+1</span></li>
+        </ul>
+        <img src="image_6.jpg" alt="Step 6">
+    </div>
