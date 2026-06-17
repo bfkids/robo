@@ -1,10 +1,8 @@
-BreadSnowBot Model 1: GoFast Edition
+BreadSnowBot Model 1: Cola-Bot
 
 
 ## Specifications
 | Qty | Part | Part Number | Source | Price |
 | --- | --- | --- | --- | --- |
-| 2 | Adafruit Multi-Hub Wheel (Universal 65mm, Black) | ADA4205 | BerryBase | 3.90 CHF |
-| 4 | Technic Liftarm 1x3 | 4210751 | klickbricks | 0.56 CHF |
-| 1 | M5Stack Servo Kit 360° | M5-A076-C | BerryBase | 10.80 CHF |
-| 1 | Raspberry Pi Pico 2 (with Headers) | RPI.PICO2-H | BerryBase | 5.90 CHF |
+| 1 | PET-bottle | --- | trash | --- |
+| 8 | Supermagnet | 08-02-N|Berybase | 3.00 CHF |
