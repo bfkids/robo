@@ -1,4 +1,4 @@
-BreadSnowBot Model 1: Cola-Bot
+BreadSnowBot Model 1
 
 
 ## Specifications
