@@ -63,12 +63,9 @@
             max-height: 1000px;
         }
         .image-placeholder {
-            display: block;
-            width: 100%;
+            max-width: 100%;
             height: auto;
-            max-height: 500px; /* Begrenzt die Höhe exakt wie auf index.html */
-            object-fit: contain; /* Verhindert Verzerrungen */
-            border-radius: 6px;
+            display: block;
             margin: 15px 0;
         }
         table {
@@ -106,26 +103,4 @@
     <div class="accordion-item">
         <div class="accordion-header">Model 1</div>
         <div class="accordion-content active">
-            <img src="model1.jpg" alt="BreadSnowBot Model 1" class="image-placeholder">
-        </div>
-    </div>
-    <div class="accordion-item">
-        <div class="accordion-header">Model 2</div>
-        <div class="accordion-content">
-            <img src="model2.jpg" alt="BreadSnowBot Model 2" class="image-placeholder">
-        </div>
-    </div>
-    <div class="accordion-item">
-        <div class="accordion-header">Model 3</div>
-        <div class="accordion-content">
-            <img src="model3.jpg" alt="BreadSnowBot Model 3" class="image-placeholder">
-        </div>
-    </div>
-    <div class="accordion-item">
-        <div class="accordion-header">Model 4</div>
-        <div class="accordion-content">
-            <img src="model4.jpg" alt="BreadSnowBot Model 4" class="image-placeholder">
-        </div>
-    </div>
-</body>
-</html>
+            <img src="model1.jpg" alt="BreadSnowBot Model 1" class="image-placeholder" style="width: 100%; max-height: 500px; object-fit: contain;">
