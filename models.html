@@ -63,12 +63,13 @@
             max-height: 1000px;
         }
         .image-placeholder {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
             display: block;
+            width: 100%;
+            height: auto;
+            max-height: 500px; /* Begrenzt die Höhe exakt wie auf index.html */
+            object-fit: contain; /* Verhindert Verzerrungen */
+            border-radius: 6px;
             margin: 15px 0;
-            box-sizing: border-box;
         }
         table {
             width: 100%;
