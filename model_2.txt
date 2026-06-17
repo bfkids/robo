@@ -1,4 +1,4 @@
-BreadSnowBot Model 2: Speedster Edition
+BreadSnowBot Model 2
 
 ## Specifications
 | Qty | Part | Part Number | Source | Price |
